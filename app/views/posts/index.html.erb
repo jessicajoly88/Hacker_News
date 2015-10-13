@@ -3,6 +3,7 @@
     <li>
       <%= link_to content_tag(:span, "", class:"glyphicon glyphicon-arrow-up"), edit_post_path(post.id, upvote: true) %>
       <small><%= post.point %> points</small>
+      <small><%= ((Time.now - post.created_at)/60).round(0)%> minutes</small>
       <%= link_to post.title, post.url %>
       <%= link_to "Edit", edit_post_path(post) %>
       <%= link_to "Delete", post_path(post), data: {confirm: "Really?", method: "delete"} %>
