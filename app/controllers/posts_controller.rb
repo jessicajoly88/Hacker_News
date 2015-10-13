@@ -3,7 +3,6 @@ class PostsController < ApplicationController
     @posts = Post.all.sort_by {|post|
       (post.point + ((1/(Time.new - post.created_at) * 20000)))
     }
-
     @posts.reverse!
   end
 
