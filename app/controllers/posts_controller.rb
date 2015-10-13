@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.sort_by &:point
+    @posts.reverse!
   end
 
   def show
