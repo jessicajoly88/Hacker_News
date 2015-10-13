@@ -1,2 +1,23 @@
 <h1><%= @post.title %></h1>
+<% if @post.comments.any? %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <%= comment.author %>
+        <%= comment.description %> |
+        <%= link_to "Edit", edit_post_comment_path(@post, comment) %> |
+        <%= link_to "Delete", post_comment_path(@post, comment),
+                               :data => {:confirm => "Are you sure?",
+                                              :method => "delete"} %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+<p>There are no comments yet!</p>
+<% end %>
+
+<p><%= link_to "Add a comment", new_post_comment_path(@post) %></p>
+
+
+
 <p><%=link_to "Return to Posts", posts_path %></p>

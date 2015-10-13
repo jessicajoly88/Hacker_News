@@ -7,6 +7,7 @@
       <%= link_to post.title, post.url %>
       <%= link_to "Edit", edit_post_path(post) %>
       <%= link_to "Delete", post_path(post), data: {confirm: "Really?", method: "delete"} %>
+      <%= link_to "Comments", post_comment_path(post) %>
     </li>
 
   <% end %>
