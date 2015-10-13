@@ -14,6 +14,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.point = 0
+    if !@post.url.include? "https://"
+      @post.url = "https://" + @post.url
+    end
     if @post.save
       redirect_to posts_path
     else
@@ -25,10 +28,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if params[:upvote]
       new_points = @post.point += 1
-      @post.update(point: new_points)
-      redirect_to posts_path
-    elsif params[:downvote]
-      new_points = @post.point -= 1
       @post.update(point: new_points)
       redirect_to posts_path
     end
