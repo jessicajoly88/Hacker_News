@@ -23,6 +23,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if params[:upvote]
+      new_points = @post.point += 1
+      @post.update(point: new_points)
+      redirect_to posts_path
+    elsif params[:downvote]
+      new_points = @post.point -= 1
+      @post.update(point: new_points)
+      redirect_to posts_path
+    end
   end
 
   def update
