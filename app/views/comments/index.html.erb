@@ -1,0 +1,10 @@
+<ul>
+  <% @comments.each do |comment| %>
+    <li> 
+      <%= comment.author %>
+      <%= comment.description %> 
+    </li>
+  <% end %>  
+ </ul>
+
+ <p><%= link_to "Add a comment", new_post_comment_path %></p>
